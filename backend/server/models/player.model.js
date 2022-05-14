@@ -8,6 +8,18 @@ const PlayerSchema = new mongoose.Schema({
     },
     prefPosition: {
         type: String
+    },
+    gameOne: {
+        type: String, 
+        default: "Undecided"
+    },
+    gameTwo: {
+        type: String,
+        default: "Undecided"
+    },
+    gameThree: {
+        type: String,
+        default: "Undecided"
     }
 }, {timestamps: true});
 
