@@ -11,9 +11,10 @@ module.exports.createPlayer = (req, res) => {
     Player.create({
         name,
         prefPosition
-    })
+    }, {runValidators: true}
+    )
     .then(player => res.json(player))
-    .catch(err => res.status(400).json(player))
+    .catch(err => res.status(400).json(err))
 }
 
 module.exports.findOnePlayer = (req, res) => {
@@ -25,11 +26,21 @@ module.exports.findOnePlayer = (req, res) => {
 module.exports.findAllPlayer = (req, res) => {
     Player.find()
     .then(players => res.json(players))
-    catch(err => res.json(err))
+    .catch(err => res.json(err))
 }
 
 module.exports.deleteOnePlayer = (req, res) => {
     Player.deleteOne({_id: req.params._id})
     .then(player => res.json(player))
+    .catch(err => res.json(err))
+}
+
+module.exports.updateAction = (req, res) => {
+    Player.findOneAndUpdate(
+        {_id: req.params._id },
+        req.body,
+        {runValidators: true, new: true}
+    )
+    .then(updateInfo => res.json(updateInfo))
     .catch(err => res.json(err))
 }

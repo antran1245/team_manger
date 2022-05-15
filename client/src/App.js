@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
-import GameOne from './components/GameOne';
 import ManagePlayer from './components/ManagePlayer';
+import Status from './components/Status';
 import './App.css';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <div className='box'>
         <Routes>
           <Route path="/*" element={<ManagePlayer/>} />
-          <Route path="/status/game/1" element={<GameOne />}/>
+          <Route path="/status/game/:num" element={<Status />}/>
           <Route path='' element={<Navigate replace to={'/players/list'} />}/>
         </Routes>
       </div>

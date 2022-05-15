@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const PlayerSchema = new mongoose.Schema({
     name: {
         type: String, 
+        required: true,
         minLength: [2, "Name must be at least 2 characters long."],
-        required: true
     },
     prefPosition: {
         type: String
@@ -20,7 +20,7 @@ const PlayerSchema = new mongoose.Schema({
     gameThree: {
         type: String,
         default: "Undecided"
-    }
+    },
 }, {timestamps: true});
 
 const Player = mongoose.model('Players', PlayerSchema);
