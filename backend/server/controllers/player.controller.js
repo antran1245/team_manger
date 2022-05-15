@@ -11,7 +11,7 @@ module.exports.createPlayer = (req, res) => {
     Player.create({
         name,
         prefPosition
-    }, {runValidators: true}
+    }
     )
     .then(player => res.json(player))
     .catch(err => res.status(400).json(err))
